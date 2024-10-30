@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let resultVC = segue.destination as! ResultViewController
-        resultVC.bmi = bmiCalculator.getBMIString()
+        resultVC.bmi = bmiCalculator.bmi
     }
 
 }
