@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var bmi: Float = 0.0
+    var bmiCalculator = BMICalculator()
     
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
@@ -34,14 +34,14 @@ class MainViewController: UIViewController {
         let height = heightSlider.value
         let weight = weightSlider.value
         
-        bmi = weight / pow(height, 2)
+        bmiCalculator.calculate(height: height, weight: weight)
         
         self.performSegue(withIdentifier: "goToResult", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let resultVC = segue.destination as! ResultViewController
-        resultVC.bmi = String(format: "%.2f", bmi)
+        resultVC.bmi = bmiCalculator.getBMIString()
     }
 
 }
